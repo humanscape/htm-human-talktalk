@@ -1,10 +1,12 @@
 import React from 'react';
+import InitPage from 'pages/InitPage';
+import { MemberProvider } from 'contexts/MemberContext';
 
 const App = () => {
   return (
-    <div>
-      Hello world!
-    </div>
+    <MemberProvider>
+      <InitPage />
+    </MemberProvider>
   );
 }
 
