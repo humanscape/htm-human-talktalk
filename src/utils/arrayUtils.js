@@ -16,6 +16,10 @@ export const shuffle = (array) => {
 };
 
 export const groupize = (array, size) => {
+  if (array.length < size) {
+    throw new Error('Cannot set team size more than array size.');
+  }
+  
   const newArray = [];
   const teamCount = Math.floor(array.length / size);
 
