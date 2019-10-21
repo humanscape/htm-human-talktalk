@@ -28,7 +28,7 @@ function memberReducer(state, action) {
         return state;
       }
       const randomMembers = shuffle(state.members.filter(member => member.absent === false));
-      const matchedMembers = groupize(randomMembers, 4);
+      const matchedMembers = groupize(randomMembers, 3);
       return {
         ...state,
         matchedMembers
