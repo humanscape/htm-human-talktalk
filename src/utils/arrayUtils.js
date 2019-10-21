@@ -15,13 +15,27 @@ export const shuffle = (array) => {
   return array;
 };
 
-export const groupize = (array, size) => {
+export const groupize = (array, size, style) => {
   if (array.length < size) {
     throw new Error('Cannot set team size more than array size.');
   }
   
   const newArray = [];
-  const teamCount = Math.floor(array.length / size);
+  
+  let teamCount = -1;
+  if (style === 'floor') {
+    teamCount = Math.floor(array.length / size);
+  }
+  if (style === 'ceil') {
+    teamCount = Math.ceil(array.length / size);
+  }
+  if (style === 'round') {
+    teamCount = Math.round(array.length / size);
+  }
+
+  if (teamCount === -1) {
+    throw new Error('Unhandled groupize style.');
+  }
 
   for (let i = 0; i < teamCount; i++) {
     newArray.push([]);

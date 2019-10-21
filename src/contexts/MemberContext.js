@@ -10,6 +10,8 @@ const getInitialState = () => ({
   members: getInitialMembersState(),
   matchedMembers: [],
   directAccess: true,
+  size: 4,
+  style: 'ceil',
 });
 
 function memberReducer(state, action) {
@@ -28,7 +30,7 @@ function memberReducer(state, action) {
         return state;
       }
       const randomMembers = shuffle(state.members.filter(member => member.absent === false));
-      const matchedMembers = groupize(randomMembers, 3);
+      const matchedMembers = groupize(randomMembers, state.size, state.style);
       return {
         ...state,
         matchedMembers
@@ -37,6 +39,16 @@ function memberReducer(state, action) {
       return {
         ...state,
         directAccess: false,
+      };
+    case "CHANGE_SIZE":
+      return {
+        ...state,
+        size: action.size,
+      };
+    case "CHANGE_STYLE":
+      return {
+        ...state,
+        style: action.style,
       };
     case "RESET":
       return getInitialState();
