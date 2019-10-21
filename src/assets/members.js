@@ -1,14 +1,14 @@
 import importAll from 'utils/importAll';
 
-const resolveMembers = () => {
+export const getInitialMembersState = () => {
   const members = importAll(require.context('./img/members', false, /\.(png|jpe?g|svg)$/));
 
   return members.map(image => {
     const name = image.slice(14).split('.')[0];
-    return { name, image };
+    return { name, image, absent: false };
   });
 };
 
-const members = resolveMembers();
+const members = getInitialMembersState();
 
 export default members;
