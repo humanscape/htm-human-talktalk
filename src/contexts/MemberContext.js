@@ -33,9 +33,13 @@ export const MemberProvider = ({ children }) => {
   );
 };
 
-export const useMemberState = () => {
+export const useMemberState = (selector = undefined) => {
   const state = useContext(MemberStateContext);
   if (!state) throw new Error('MemberStateContext cannot be provided.');
+
+  if (selector) {
+    return selector(state);
+  }
   return state;
 };
 
@@ -43,9 +47,4 @@ export const useMemberDispatch = () => {
   const dispatch = useContext(MemberDispatchContext);
   if (!dispatch) throw new Error('MemberDispatchContext cannot be provided.');
   return dispatch;
-};
-
-export const useMemberStateWithAbsent = (absent) => {
-  const { members } = useMemberState();
-  return members.filter(member => member.absent === absent);
 };

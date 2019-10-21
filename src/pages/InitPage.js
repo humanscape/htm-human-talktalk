@@ -4,7 +4,7 @@ import styled from 'styled-components';
 import Container from 'components/atoms/Container';
 import PageHeader from 'components/morecules/PageHeader';
 import MemberList from 'components/organisms/MemberList';
-import { useMemberStateWithAbsent } from 'contexts/MemberContext';
+import { useMemberState } from 'contexts/MemberContext';
 
 const ContentWrapper = styled.div`
   margin-top: 7rem;
@@ -12,8 +12,8 @@ const ContentWrapper = styled.div`
 `;
 
 const InitPage = () => {
-  const joinMembers = useMemberStateWithAbsent(false);
-  const absentMembers = useMemberStateWithAbsent(true);
+  const joinMembers = useMemberState(state => state.members.filter(member => member.absent === false));
+  const absentMembers = useMemberState(state => state.members.filter(member => member.absent === true));
   return (
     <Container>
       <PageHeader />
