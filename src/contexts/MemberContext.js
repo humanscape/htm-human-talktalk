@@ -1,6 +1,8 @@
 import React, { createContext, useReducer, useContext } from 'react';
 import { getInitialMembersState } from 'assets/members';
 
+import { shuffle, groupize } from 'utils/arrayUtils';
+
 const MemberStateContext = createContext(undefined);
 const MemberDispatchContext = createContext(undefined);
 
@@ -17,6 +19,12 @@ function memberReducer(state, action) {
       };
     case "MATCH_MEMBERS":
       return state;
+      const randomMembers = shuffle(state.members.filter(member => member.absent === false));
+      const matchedMembers = groupize(randomMembers, 4);
+      return {
+        ...state,
+        matchedMembers
+      };
     default:
       throw new Error('Unhandled Action type.');
   }
