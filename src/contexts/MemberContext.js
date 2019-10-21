@@ -6,6 +6,12 @@ import { shuffle, groupize } from 'utils/arrayUtils';
 const MemberStateContext = createContext(undefined);
 const MemberDispatchContext = createContext(undefined);
 
+const getInitialState = () => ({
+  members: getInitialMembersState(),
+  matchedMembers: [],
+  directAccess: true,
+});
+
 function memberReducer(state, action) {
   switch (action.type) {
     case "TOGGLE_ABSENT":
@@ -18,20 +24,29 @@ function memberReducer(state, action) {
         )
       };
     case "MATCH_MEMBERS":
-      return state;
+      if (state.directAccess) {
+        return state;
+      }
       const randomMembers = shuffle(state.members.filter(member => member.absent === false));
       const matchedMembers = groupize(randomMembers, 4);
       return {
         ...state,
         matchedMembers
       };
+    case "VERIFY_PROPER_ACCESS":
+      return {
+        ...state,
+        directAccess: false,
+      };
+    case "RESET":
+      return getInitialState();
     default:
       throw new Error('Unhandled Action type.');
   }
 }
 
 export const MemberProvider = ({ children }) => {
-  const [state, dispatch] = useReducer(memberReducer, { members: getInitialMembersState(), matchedMembers: [] });
+  const [state, dispatch] = useReducer(memberReducer, getInitialState());
   return (
     <MemberDispatchContext.Provider value={dispatch}>
       <MemberStateContext.Provider value={state}>

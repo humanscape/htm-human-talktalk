@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -6,7 +6,7 @@ import Container from 'components/atoms/Container';
 import Button from 'components/atoms/Button';
 import MemberList from 'components/organisms/MemberList';
 
-import { useMemberState } from 'contexts/MemberContext';
+import { useMemberState, useMemberDispatch } from 'contexts/MemberContext';
 
 import COLORS from 'assets/colors';
 
@@ -20,8 +20,14 @@ const ButtonWrapper = styled(Button)`
 `;
 
 const InitPage = () => {
+  const dispatch = useMemberDispatch();
+  useEffect(() => {
+    dispatch({ type: "VERIFY_PROPER_ACCESS" })
+  }, []);
+
   const joinMembers = useMemberState(state => state.members.filter(member => member.absent === false));
   const absentMembers = useMemberState(state => state.members.filter(member => member.absent === true));
+  
   return (
     <Container>
       <ContentWrapper>
