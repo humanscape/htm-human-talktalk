@@ -11,16 +11,15 @@ const MemberWrapper = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  cursor: pointer;
   padding: 1.25rem;
 
   transition: box-shadow 0.4s;
 
   ${props => props.onClick && css`
+    cursor: pointer;
     :hover {
       box-shadow: 0 0 4px ${COLORS.GRAY[6]};
     }
-
     :active {
       background-color: ${COLORS.GRAY[3]};
     }
