@@ -13,14 +13,14 @@ const Wrapper = styled.div`
 const MemberList = ({
   members,
   title,
-  onClick,
+  clickable,
 }) => {
   const dispatch = useMemberDispatch();
   return (
     <>
       <TabHeader title={title} />
       <Wrapper>
-        {members.map(member => <Member onClick={() => dispatch({ type: "TOGGLE_ABSENT", name: member.name })} member={member} key={member.name} />)}
+        {members.map(member => <Member onClick={clickable ? () => dispatch({ type: "TOGGLE_ABSENT", name: member.name }) : null} member={member} key={member.name} />)}
       </Wrapper>
     </>
   );
