@@ -44,3 +44,8 @@ export const useMemberDispatch = () => {
   if (!dispatch) throw new Error('MemberDispatchContext cannot be provided.');
   return dispatch;
 };
+
+export const useMemberStateWithAbsent = (absent) => {
+  const { members } = useMemberState();
+  return members.filter(member => member.absent === absent);
+};
