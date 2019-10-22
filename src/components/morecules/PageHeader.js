@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import Image from 'components/atoms/Image';
+import Icon from 'components/atoms/Icon';
 
 import COLORS from 'assets/colors';
 import hum from 'assets/img/hum.png'
@@ -35,7 +35,7 @@ const PageHeader = () => {
       <Gap top="0.6rem" />
       <Container>
         <Flex>
-          <Image width="58px" height="64px" src={hum} />
+          <Icon width="58px" height="64px" src={hum} />
           <Text>휴먼톡톡</Text>
         </Flex>
       </Container>

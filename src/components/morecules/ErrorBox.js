@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
-import Image from 'components/atoms/Image';
+import Icon from 'components/atoms/Icon';
 import Gap from 'components/atoms/Gap';
 import Button from 'components/atoms/Button';
 
@@ -27,7 +27,7 @@ const Title = styled(Text)`
 const ErrorBox = ({ image, title, text, buttonText = "확인" }) => {
   return (
     <ErrorBoxWrapper>
-      <Image src={image} width="256px" height="242px" />
+      <Icon src={image} width="256px" height="242px" />
       <Gap top="3rem" />
       <Title>{title}</Title>
       <Gap top="2rem" />

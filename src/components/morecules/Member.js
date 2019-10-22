@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'styled-components';
 
-import Image from 'components/atoms/Image';
+import Icon from 'components/atoms/Icon';
 import Gap from 'components/atoms/Gap';
 
 import COLORS from 'assets/colors';
@@ -37,7 +37,7 @@ const Member = ({
 }) => {
   return (
     <MemberWrapper onClick={onClick} {...rest}>
-      <Image src={member.image} />
+      <Icon src={member.image} />
       <Gap top="0.5rem" />
       <Text>{member.name}</Text>
     </MemberWrapper>
