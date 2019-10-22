@@ -12,6 +12,7 @@ const Button = styled.button`
   transition: all 0.4s;
   ${props => props.inverted && props.inverted === true
     ? css`
+      color: ${COLORS.WHITE};
       background-color: ${props.color};
       :hover {
         background-color: ${COLORS.WHITE};

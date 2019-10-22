@@ -9,6 +9,13 @@ export const getInitialMembersState = () => {
   });
 };
 
+export const emojiArray = [
+  {
+    name: "Joy",
+    emoji: "joyy",
+  }
+];
+
 const members = getInitialMembersState();
 
 export default members;
