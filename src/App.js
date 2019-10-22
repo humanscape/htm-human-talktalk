@@ -6,6 +6,7 @@ import PageHeader from 'components/morecules/PageHeader';
 
 import InitPage from 'pages/InitPage';
 import MatchPage from 'pages/MatchPage';
+import ErrorPage from 'pages/ErrorPage';
 
 import { MemberProvider } from 'contexts/MemberContext';
 
@@ -17,6 +18,7 @@ const App = () => {
         <Switch>
           <Route path="/" exact><InitPage /></Route>
           <Route path="/match"><MatchPage /></Route>
+          <Route><ErrorPage /></Route>
         </Switch>
       </MemberProvider>
     </BrowserRouter>

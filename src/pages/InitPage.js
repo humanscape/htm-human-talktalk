@@ -32,7 +32,7 @@ const Text = styled.div`
 const InitPage = () => {
   const dispatch = useMemberDispatch();
   useEffect(() => {
-    dispatch({ type: "VERIFY_PROPER_ACCESS" })
+    dispatch({ type: "VERIFY_PROPER_ACCESS" });
   }, []);
 
   const joinMembers = useMemberState(state => state.members.filter(member => member.absent === false));
