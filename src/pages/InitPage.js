@@ -18,6 +18,7 @@ const BottomWrapper = styled.div`
   justify-content: center;
   align-items: center;
   font-size: 1.25rem;
+  margin-bottom: 4rem;
 `;
 
 const SelectWrapper = styled.select`
