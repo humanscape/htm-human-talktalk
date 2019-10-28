@@ -65,12 +65,12 @@ const MatchPage = () => {
             {matchedMembers.map((matchSet, i) => <MemberList key={`team_${i + 1}`} members={matchSet} title={`그룹 ${i + 1}`} clickable={false} />)}
             <Gap top="3rem" />
             <BottomWrapper>
-              <LabelWrapper>비밀번호: </LabelWrapper>
+              {/* <LabelWrapper>비밀번호: </LabelWrapper>
               <Gap left="0.5rem" />
               <InputWrapper type="password" value={password} onChange={handleChange} />
               <Gap left="0.5rem" />
               <Button color={COLORS.INDIGO[6]} onClick={handleSendSlack}>Slack에 결과 전송하기</Button>
-              <Gap left="1rem" />
+              <Gap left="1rem" /> */}
               <Link to="/">
                 <Button color={COLORS.BLUE[6]}>메인으로 가기</Button>
               </Link>
