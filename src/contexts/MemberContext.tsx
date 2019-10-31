@@ -86,9 +86,9 @@ export const MemberProvider: React.FC = ({ children }) => {
   );
 };
 
-type SelectorFunction = (state: State) => any;
+type SelectorFunction<T> = (state: State) => T;
 
-export const useMemberState: (selector: Maybe<SelectorFunction>) => State | any = (selector: Maybe<SelectorFunction>) => {
+export const useMemberState = <T extends {}>(selector: Maybe<SelectorFunction<T>>) => {
   const state = useContext(MemberStateContext);
   if (!state) throw new Error('MemberStateContext cannot be provided.');
 
