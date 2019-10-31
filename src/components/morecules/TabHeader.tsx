@@ -15,9 +15,11 @@ const TabHeaderWrapper = styled.div`
   font-weight: bold;
 `;
 
-const TabHeader = ({
-  title = "제목을 입력해주세요."
-}) => {
+interface Props {
+  title?: string;
+};
+
+const TabHeader: React.FC<Props> = ({ title = "제목을 입력해주세요." }) => {
   return (
     <TabHeaderWrapper>
       {title}

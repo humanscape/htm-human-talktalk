@@ -29,7 +29,7 @@ const Text = styled.div`
   font-weight: bold;
 `;
 
-const PageHeader = () => {
+const PageHeader: React.FC = () => {
   return (
     <PageHeaderWrapper>
       <Gap top="0.6rem" />

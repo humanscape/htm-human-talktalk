@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { MouseEvent } from 'react';
 import styled, { css } from 'styled-components';
 
 import Icon from 'components/atoms/Icon';
 import Gap from 'components/atoms/Gap';
 
 import COLORS from 'assets/colors';
+import Member from 'types/Member';
 
 const MemberWrapper = styled.div`
   display: flex;
@@ -30,11 +31,12 @@ const Text = styled.div`
   font-size: 1rem;
 `;
 
-const Member = ({
-  member,
-  onClick,
-  ...rest
-}) => {
+interface Props {
+  member: Member;
+  onClick?: (event: React.MouseEvent) => void;
+};
+
+const MemberItem: React.FC<Props> = ({ member, onClick, ...rest }) => {
   return (
     <MemberWrapper onClick={onClick} {...rest}>
       <Icon src={member.image} />
@@ -44,4 +46,4 @@ const Member = ({
   );
 };
 
-export default Member;
+export default MemberItem;

@@ -24,7 +24,14 @@ const Title = styled(Text)`
   font-weight: bold;
 `;
 
-const ErrorBox = ({ image, title, text, buttonText = "확인" }) => {
+interface Props {
+  image: string;
+  title: string;
+  text: string;
+  buttonText?: string;
+};
+
+const ErrorBox: React.FC<Props> = ({ image, title, text, buttonText = "확인" }) => {
   return (
     <ErrorBoxWrapper>
       <Icon src={image} width="256px" height="242px" />
