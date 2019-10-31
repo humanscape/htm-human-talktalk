@@ -2,11 +2,15 @@ import axios from 'axios';
 
 import COLORS from 'assets/colors';
 import { emojiArray } from 'assets/members';
+import Member from 'types/Member';
 
 const { REACT_APP_SLACK_URI: slackUri } = process.env;
 
-export default async (matchedMembers) => {
+export default async (matchedMembers: Array<Array<Member>>) => {
   try {
+    if (!slackUri) {
+      throw new Error('Slack URI is not defined.');
+    }
     const response = await axios.post(slackUri, JSON.stringify({
       "attachments": [
         {

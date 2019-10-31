@@ -1,7 +1,10 @@
-export const shuffle = (array) => {
+import Maybe from 'types/Maybe';
+
+export const shuffle = <T>(array: Array<T>) => {
   let currentIndex = array.length;
-  let temp = -1;
   let randomIndex = -1;
+
+  let temp: Maybe<T> = null;
 
   while (0 !== currentIndex) {
     randomIndex = Math.floor(Math.random() * currentIndex);
@@ -15,12 +18,14 @@ export const shuffle = (array) => {
   return array;
 };
 
-export const groupize = (array, size, style) => {
+export type GroupizeStyle = 'floor' | 'ceil' | 'round';
+
+export const groupize = <T>(array: Array<T>, size: number, style: GroupizeStyle) => {
   if (array.length < size) {
     throw new Error('Cannot set team size more than array size.');
   }
   
-  const newArray = [];
+  const newArray: Array<Array<T>> = [];
   
   let teamCount = -1;
   if (style === 'floor') {

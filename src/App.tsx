@@ -10,7 +10,7 @@ import ErrorPage from 'pages/ErrorPage';
 
 import { MemberProvider } from 'contexts/MemberContext';
 
-const App = () => {
+const App: React.FC = () => {
   return (
     <BrowserRouter>
       <MemberProvider>
