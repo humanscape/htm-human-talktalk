@@ -1,12 +1,30 @@
-import React, { createContext, useReducer, useContext } from 'react';
+import React, { createContext, useReducer, useContext, Dispatch } from 'react';
 import { getInitialMembersState } from 'assets/members';
 
-import { shuffle, groupize } from 'utils/arrayUtils';
+import { shuffle, groupize, GroupizeStyle } from 'utils/arrayUtils';
+import Member from 'types/Member';
+import Maybe from 'types/Maybe';
 
-const MemberStateContext = createContext(undefined);
-const MemberDispatchContext = createContext(undefined);
+const MemberStateContext = createContext<Maybe<State>>(undefined);
+const MemberDispatchContext = createContext<Maybe<Dispatch<Action>>>(undefined);
 
-const getInitialState = () => ({
+interface State {
+  members: Array<Member>;
+  matchedMembers: Array<Array<Member>>;
+  directAccess: boolean;
+  size: number;
+  style: GroupizeStyle;
+};
+
+type Action =
+  | { type: 'TOGGLE_ABSENT', name: string }
+  | { type: 'MATCH_MEMBERS' }
+  | { type: 'VERIFY_PROPER_ACCESS' }
+  | { type: 'CHANGE_SIZE', size: number }
+  | { type: 'CHANGE_STYLE', style: GroupizeStyle }
+  | { type: 'RESET' };
+
+const getInitialState: () => State = () => ({
   members: getInitialMembersState(),
   matchedMembers: [],
   directAccess: true,
@@ -14,9 +32,9 @@ const getInitialState = () => ({
   style: 'ceil',
 });
 
-function memberReducer(state, action) {
+function memberReducer(state: State, action: Action) {
   switch (action.type) {
-    case "TOGGLE_ABSENT":
+    case 'TOGGLE_ABSENT':
       return {
         ...state,
         members: state.members.map(member =>
@@ -25,7 +43,7 @@ function memberReducer(state, action) {
             : member
         )
       };
-    case "MATCH_MEMBERS":
+    case 'MATCH_MEMBERS':
       if (state.directAccess) {
         return state;
       }
@@ -35,29 +53,29 @@ function memberReducer(state, action) {
         ...state,
         matchedMembers
       };
-    case "VERIFY_PROPER_ACCESS":
+    case 'VERIFY_PROPER_ACCESS':
       return {
         ...state,
         directAccess: false,
       };
-    case "CHANGE_SIZE":
+    case 'CHANGE_SIZE':
       return {
         ...state,
         size: action.size,
       };
-    case "CHANGE_STYLE":
+    case 'CHANGE_STYLE':
       return {
         ...state,
         style: action.style,
       };
-    case "RESET":
+    case 'RESET':
       return getInitialState();
     default:
       throw new Error('Unhandled Action type.');
   }
 }
 
-export const MemberProvider = ({ children }) => {
+export const MemberProvider: React.FC = ({ children }) => {
   const [state, dispatch] = useReducer(memberReducer, getInitialState());
   return (
     <MemberDispatchContext.Provider value={dispatch}>
@@ -68,14 +86,16 @@ export const MemberProvider = ({ children }) => {
   );
 };
 
-export const useMemberState = (selector = undefined) => {
+type SelectorFunction = (state: State) => any;
+
+export const useMemberState: (selector: Maybe<SelectorFunction>) => State | any = (selector: Maybe<SelectorFunction>) => {
   const state = useContext(MemberStateContext);
   if (!state) throw new Error('MemberStateContext cannot be provided.');
 
-  if (selector) {
-    return selector(state);
+  if (!selector) {
+    return state;
   }
-  return state;
+  return selector(state);
 };
 
 export const useMemberDispatch = () => {
