@@ -8,7 +8,7 @@ const ContentWrapper = styled.div`
   margin-bottom: 4rem;
 `;
 
-const PageTemplate = ({ children }) => {
+const PageTemplate: React.FC = ({ children }) => {
   return (
     <Container>
       <ContentWrapper>

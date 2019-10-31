@@ -5,7 +5,7 @@ import ErrorBox from 'components/morecules/ErrorBox';
 
 import misaeError from 'assets/img/misae-error.png';
 
-const ErrorPage = () => {
+const ErrorPage: React.FC = () => {
   return (
     <PageTemplate>
       <ErrorBox image={misaeError} title="404" text="잘못된 경로에요." />

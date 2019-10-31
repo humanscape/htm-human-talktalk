@@ -88,12 +88,12 @@ export const MemberProvider: React.FC = ({ children }) => {
 
 type SelectorFunction<T> = (state: State) => T;
 
-export const useMemberState = <T extends {}>(selector: Maybe<SelectorFunction<T>>) => {
+export const useMemberState = <T extends {}>(selector?: Maybe<SelectorFunction<T>>) => {
   const state = useContext(MemberStateContext);
   if (!state) throw new Error('MemberStateContext cannot be provided.');
 
   if (!selector) {
-    return state;
+    throw new Error('Cannot resolve selector.');
   }
   return selector(state);
 };

@@ -33,7 +33,7 @@ const InputWrapper = styled.input`
   font-size: 1.25rem;
 `;
 
-const MatchPage = () => {
+const MatchPage: React.FC = () => {
   const dispatch = useMemberDispatch();
   useEffect(() => {
     dispatch({ type: 'MATCH_MEMBERS' });
@@ -41,7 +41,7 @@ const MatchPage = () => {
 
   const [password, setPassword] = useState('');
 
-  const handleChange = (event) => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setPassword(event.target.value);
   };
 

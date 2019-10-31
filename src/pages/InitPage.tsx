@@ -10,6 +10,7 @@ import { useMemberState, useMemberDispatch } from 'contexts/MemberContext';
 
 import COLORS from 'assets/colors';
 import Gap from 'components/atoms/Gap';
+import { GroupizeStyle } from 'utils/arrayUtils';
 
 const BottomWrapper = styled.div`
   float: right;
@@ -30,7 +31,7 @@ const Text = styled.div`
   margin-right: 1rem;
 `;
 
-const InitPage = () => {
+const InitPage: React.FC = () => {
   const dispatch = useMemberDispatch();
   useEffect(() => {
     dispatch({ type: "VERIFY_PROPER_ACCESS" });
@@ -49,12 +50,12 @@ const InitPage = () => {
     return array;
   }, []);
 
-  const handleSize = (event) => {
+  const handleSize = (event: React.ChangeEvent<HTMLSelectElement>) => {
     dispatch({ type: "CHANGE_SIZE", size: parseInt(event.target.value) });
   };
 
-  const handleStyle = (event) => {
-    dispatch({ type: "CHANGE_STYLE", style: event.target.value });
+  const handleStyle = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    dispatch({ type: "CHANGE_STYLE", style: event.target.value as GroupizeStyle });
   };
 
   return (
