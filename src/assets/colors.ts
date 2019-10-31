@@ -1,10 +1,16 @@
+import { Color } from 'csstype';
+
 /**
  * Using Open Color Library.
  * 
  * https://github.com/yeun/open-color
  */
 
-const COLORS = {
+interface ColorConstants {
+  [name: string]: Array<Color> | Color;
+};
+
+const COLORS: ColorConstants = {
   WHITE: "#ffffff",
   BLACK: "#000000",
   GRAY: [

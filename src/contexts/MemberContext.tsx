@@ -1,6 +1,6 @@
 import React, { createContext, useReducer, useContext, Dispatch } from 'react';
-import { getInitialMembersState } from 'assets/members';
 
+import { getInitialMembersState } from 'assets/members';
 import { shuffle, groupize, GroupizeStyle } from 'utils/arrayUtils';
 import Member from 'types/Member';
 import Maybe from 'types/Maybe';
