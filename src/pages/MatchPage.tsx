@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCallback } from 'react';
+import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
@@ -37,6 +37,7 @@ const MatchPage: React.FC = () => {
   const dispatch = useMemberDispatch();
   useEffect(() => {
     dispatch({ type: 'MATCH_MEMBERS' });
+    // eslint-disable-next-line
   }, []);
 
   const [password, setPassword] = useState('');

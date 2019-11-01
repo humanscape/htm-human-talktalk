@@ -35,6 +35,7 @@ const InitPage: React.FC = () => {
   const dispatch = useMemberDispatch();
   useEffect(() => {
     dispatch({ type: "VERIFY_PROPER_ACCESS" });
+    // eslint-disable-next-line
   }, []);
 
   const joinMembers = useMemberState(state => state.members.filter(member => member.absent === false));
