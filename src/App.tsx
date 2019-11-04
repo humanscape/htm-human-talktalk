@@ -9,18 +9,21 @@ import MatchPage from 'pages/MatchPage';
 import ErrorPage from 'pages/ErrorPage';
 
 import { MemberProvider } from 'contexts/MemberContext';
+import { ModalProvider } from 'contexts/ModalContext';
 
 const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <MemberProvider>
-        <PageHeader />
-        <Switch>
-          <Route path="/" exact><InitPage /></Route>
-          <Route path="/match"><MatchPage /></Route>
-          <Route><ErrorPage /></Route>
-        </Switch>
-      </MemberProvider>
+      <ModalProvider>
+        <MemberProvider>
+          <PageHeader />
+          <Switch>
+            <Route path="/" exact><InitPage /></Route>
+            <Route path="/match"><MatchPage /></Route>
+            <Route><ErrorPage /></Route>
+          </Switch>
+        </MemberProvider>
+      </ModalProvider>
     </BrowserRouter>
   );
 }

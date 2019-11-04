@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import FullShadow from 'components/atoms/FullShadow';
 import Maybe from 'types/Maybe';
 import COLORS, { changeToRGBA } from 'assets/colors';
+import { useModalDispatch, useModalState } from 'contexts/ModalContext';
 
 const modalRoot: Maybe<HTMLElement> = document.getElementById('modal-root');
 
@@ -32,15 +33,24 @@ const Modal: React.FC<Props> = ({ children, onShadowClick }) => {
     };
   }, []);
 
-  const ModalComponent = (
-    <FullShadow onClick={onShadowClick}>
+  const dispatch = useModalDispatch();
+  
+  const isOpen = useModalState(state => state.isOpen);
+
+  const handleClick = () => {
+    onShadowClick && onShadowClick();
+    dispatch({ type: "SET_MODAL_STATE", isOpen: false });
+  };
+
+  const ModalComponent = isOpen ? (
+    <FullShadow onClick={handleClick}>
       <Wrapper>
         <div>
           {children}
         </div>
       </Wrapper>
     </FullShadow>
-  );
+  ) : null;
 
   return createPortal(ModalComponent, element);
 };

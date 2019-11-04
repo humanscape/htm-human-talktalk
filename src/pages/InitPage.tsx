@@ -2,14 +2,15 @@ import React, { useEffect, useMemo } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 
+import { useMemberState, useMemberDispatch } from 'contexts/MemberContext';
+
 import Button from 'components/atoms/Button';
+import Gap from 'components/atoms/Gap';
+import Modal from 'components/morecules/Modal';
 import MemberList from 'components/organisms/MemberList';
 import PageTemplate from 'pages/PageTemplate';
 
-import { useMemberState, useMemberDispatch } from 'contexts/MemberContext';
-
 import COLORS from 'assets/colors';
-import Gap from 'components/atoms/Gap';
 import { GroupizeStyle } from 'utils/arrayUtils';
 
 const BottomWrapper = styled.div`
@@ -86,6 +87,9 @@ const InitPage: React.FC = () => {
           <Button color={COLORS.BLUE[6]}>돌리기</Button>
         </Link>
       </BottomWrapper>
+      <Modal>
+        asd
+      </Modal>
     </PageTemplate>
   );
 };

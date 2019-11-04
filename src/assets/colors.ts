@@ -171,4 +171,22 @@ const COLORS: ColorConstants = {
   ]
 };
 
+const hexToDecimal = (hex: string) => parseInt(hex, 16);
+
+export const changeToRGBA = (color: Color, opacity: string = "ff") => {
+  const seps = color.split('#')[1].split('');
+  const colorArray: Array<number> = [];
+  
+  let temp = "";
+  seps.forEach((sep, i) => {
+    temp += sep;
+    if (i % 2 === 1) {
+      colorArray.push(hexToDecimal(temp));
+      temp = "";
+    }
+  });
+
+  return `rgba(${colorArray.join(', ')}, ${opacity})`;
+};
+
 export default COLORS;
