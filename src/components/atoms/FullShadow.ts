@@ -5,6 +5,7 @@ const FullShadow = styled.div`
   position: fixed;
   top: 0;
   left: 0;
+  display: flex;
   background-color: ${changeToRGBA(COLORS.GRAY[8], ".6")};
   width: 100vw;
   height: 100vh;

@@ -6,7 +6,7 @@ import { useMemberState, useMemberDispatch } from 'contexts/MemberContext';
 
 import Button from 'components/atoms/Button';
 import Gap from 'components/atoms/Gap';
-import Modal from 'components/morecules/Modal';
+import Modal from 'components/morecules/Modal/index';
 import MemberList from 'components/organisms/MemberList';
 import PageTemplate from 'pages/PageTemplate';
 

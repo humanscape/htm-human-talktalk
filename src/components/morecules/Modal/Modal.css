@@ -1,0 +1,21 @@
+.modal-enter {
+  opacity: 0.01;
+  transform: translateY(-0.5rem);
+}
+
+.modal-enter.modal-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all 0.3s ease-in;
+}
+
+.modal-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.modal-exit.modal-exit-active {
+  opacity: 0.01;
+  transform: translateY(-0.5rem);
+  transition: all 0.3s ease-out;
+}
