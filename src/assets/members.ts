@@ -19,7 +19,15 @@ export const emojiArray: EmojiExceptions[] = [
   {
     name: "Joy",
     emoji: "joyy",
-  }
+  },
+  {
+    name: "Victoria",
+    emoji: "v",
+  },
+  {
+    name: "Oliver",
+    emoji: "o2",
+  },
 ];
 
 const members = getInitialMembersState();
