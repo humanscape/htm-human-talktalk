@@ -49,7 +49,7 @@ const PageHeader: React.FC = () => {
         <Flex>
           <Icon width="58px" height="64px" src={hum} />
           <Text>휴먼톡톡</Text>
-          <Button color={COLORS.BLUE[6]} onClick={handleClick}>돌리기</Button>
+          {/* <Button color={COLORS.BLUE[6]} onClick={handleClick}>돌리기</Button> */}
         </Flex>
       </Container>
       <Gap bottom="0.6rem" />
