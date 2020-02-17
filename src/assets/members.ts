@@ -20,26 +20,6 @@ export const emojiArray: EmojiExceptions[] = [
     name: "Joy",
     emoji: "joyy",
   },
-  {
-    name: "Victoria",
-    emoji: "slightly_smiling_face",
-  },
-  {
-    name: "Oliver",
-    emoji: "slightly_smiling_face",
-  },
-  {
-    name: "Jason",
-    emoji: "slightly_smiling_face",
-  },
-  {
-    name: "Heize",
-    emoji: "slightly_smiling_face",
-  },
-  {
-    name: "Grace",
-    emoji: "slightly_smiling_face",
-  },
 ];
 
 const members = getInitialMembersState();
