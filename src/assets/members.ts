@@ -20,6 +20,10 @@ export const emojiArray: EmojiExceptions[] = [
     name: "Joy",
     emoji: "joyy",
   },
+  {
+    name: "Tasha",
+    emoji: "tasha-new"
+  },
 ];
 
 const members = getInitialMembersState();
